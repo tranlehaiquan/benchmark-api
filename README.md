@@ -58,3 +58,42 @@ pnpm install
 # Run all benchmarks
 pnpm run bench
 ```
+
+### Result
+
+Running on my Macbook: M3 Pro 36 GB
+
+```
+🚀 Benchmarking Express...
+  🔹 Scenario: Hello World
+     Requests/sec: 56225.46
+     Latency (ms): 1.1
+  🔹 Scenario: JSON
+     Requests/sec: 54785.46
+     Latency (ms): 1.12
+  🔹 Scenario: Route Params
+     Requests/sec: 53662.55
+     Latency (ms): 1.09
+
+🚀 Benchmarking Hono...
+  🔹 Scenario: Hello World
+     Requests/sec: 88288
+     Latency (ms): 0.98
+  🔹 Scenario: JSON
+     Requests/sec: 81835.64
+     Latency (ms): 1.01
+  🔹 Scenario: Route Params
+     Requests/sec: 80322.91
+     Latency (ms): 1.02
+
+🚀 Benchmarking NestJS...
+  🔹 Scenario: Hello World
+     Requests/sec: 52650.19
+     Latency (ms): 1.16
+  🔹 Scenario: JSON
+     Requests/sec: 51838.55
+     Latency (ms): 1.1
+  🔹 Scenario: Route Params
+     Requests/sec: 48440.73
+     Latency (ms): 1.61
+```

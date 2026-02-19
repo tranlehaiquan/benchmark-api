@@ -1,11 +1,10 @@
 import autocannon from "autocannon";
 import { spawn } from "child_process";
-import path from "path";
 
 const frameworks = [
-  { name: "Express", path: "src/express/index.ts" },
-  { name: "Hono", path: "src/hono/index.ts" },
-  { name: "NestJS", path: "src/nest/main.ts" },
+  { name: "Express", path: `${__dirname}/express/index.js` },
+  { name: "Hono", path: `${__dirname}/hono/index.js` },
+  { name: "NestJS", path: `${__dirname}/nest/main.js` },
 ];
 
 const scenarios = [
@@ -18,7 +17,7 @@ async function runBenchmark(framework: { name: string; path: string }) {
   console.log(`
 🚀 Benchmarking ${framework.name}...`);
 
-  const server = spawn("npx", ["ts-node", framework.path], {
+  const server = spawn("node", [framework.path], {
     env: { ...process.env, PORT: "3000" },
     detached: true,
   });

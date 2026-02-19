@@ -1,20 +1,17 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ES2021",
+    "target": "ESNext",
+    "module": "NodeNext",
     "lib": ["ES2021"],
     "outDir": "./dist",
+    "types": ["node"],
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "baseUrl": ".",
-    "paths": {
-      "*": ["node_modules/*"]
-    }
+    "experimentalDecorators": true
   },
   "exclude": ["node_modules", "dist", "drizzle.config.ts"]
 }
