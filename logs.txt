@@ -1,40 +1,40 @@
 🚀 Benchmarking Node Http... 
   🔹 Scenario: Hello World 
-     Requests/sec: 95153.46 
-     Requests/sec: 0.82 
+     Requests/sec: 119118.55 
+     Requests/sec: 0.1 
   🔹 Scenario: JSON 
-     Requests/sec: 95671.28 
-     Requests/sec: 0.82 
+     Requests/sec: 117989.82 
+     Requests/sec: 0.11 
   🔹 Scenario: Route Params 
-     Requests/sec: 96392.73 
-     Requests/sec: 0.71 
+     Requests/sec: 118763.64 
+     Requests/sec: 0.17 
 🚀 Benchmarking Express... 
   🔹 Scenario: Hello World 
-     Requests/sec: 55207.28 
-     Requests/sec: 1.13 
+     Requests/sec: 84710.4 
+     Requests/sec: 1.02 
   🔹 Scenario: JSON 
-     Requests/sec: 55198.55 
-     Requests/sec: 1.11 
+     Requests/sec: 84616.73 
+     Requests/sec: 1 
   🔹 Scenario: Route Params 
-     Requests/sec: 52254.55 
-     Requests/sec: 1.13 
+     Requests/sec: 83581.1 
+     Requests/sec: 1.01 
 🚀 Benchmarking Hono... 
   🔹 Scenario: Hello World 
-     Requests/sec: 86717.1 
-     Requests/sec: 0.99 
+     Requests/sec: 99307.64 
+     Requests/sec: 0.28 
   🔹 Scenario: JSON 
-     Requests/sec: 81754.19 
-     Requests/sec: 1.02 
+     Requests/sec: 91499.64 
+     Requests/sec: 0.95 
   🔹 Scenario: Route Params 
-     Requests/sec: 80840.73 
-     Requests/sec: 1.01 
+     Requests/sec: 87997.1 
+     Requests/sec: 1 
 🚀 Benchmarking NestJS... 
   🔹 Scenario: Hello World 
-     Requests/sec: 52382.55 
-     Requests/sec: 1.19 
+     Requests/sec: 74423.28 
+     Requests/sec: 1.04 
   🔹 Scenario: JSON 
-     Requests/sec: 52402.91 
-     Requests/sec: 1.1 
+     Requests/sec: 72957.1 
+     Requests/sec: 1.04 
   🔹 Scenario: Route Params 
-     Requests/sec: 49008 
-     Requests/sec: 1.47 
+     Requests/sec: 68128 
+     Requests/sec: 1.08 

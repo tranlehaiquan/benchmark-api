@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "bench": "node dist/bench.js"
+    "bench": "node dist/bench.js",
+    "bench:bun": "node dist/bench.js bun"
   },
   "keywords": [],
   "author": "",

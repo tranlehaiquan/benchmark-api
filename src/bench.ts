@@ -2,6 +2,9 @@ import autocannon from "autocannon";
 import { spawn } from "child_process";
 import fs from "node:fs/promises";
 
+const args = process.argv.slice(2);
+const runTime = args[0] || "node";
+
 const frameworks = [
   { name: "Node Http", path: `${__dirname}/node-http/index.js` },
   { name: "Express", path: `${__dirname}/express/index.js` },
@@ -19,7 +22,7 @@ async function runBenchmark(framework: { name: string; path: string }) {
   let log = `🚀 Benchmarking ${framework.name}... \n`;
   console.log(`🚀 Benchmarking ${framework.name}...`);
 
-  const server = spawn("node", [framework.path], {
+  const server = spawn(runTime, [framework.path], {
     env: { ...process.env, PORT: "3000" },
     detached: true,
   });
@@ -39,7 +42,7 @@ async function runBenchmark(framework: { name: string; path: string }) {
     console.log(`     Latency (ms): ${result.latency.average}`);
 
     log += `     Requests/sec: ${result.requests.average} \n`;
-    log += `     Requests/sec: ${result.latency.average} \n`;
+    log += `     Latency (ms): ${result.latency.average} \n`;
   }
 
   // Kill the server process group
@@ -48,6 +51,7 @@ async function runBenchmark(framework: { name: string; path: string }) {
 }
 
 async function main() {
+  console.log(`Runtime ${runTime} \n`);
   let logs = [];
   for (const framework of frameworks) {
     try {
@@ -58,7 +62,7 @@ async function main() {
     }
   }
 
-  await fs.writeFile("logs.txt", logs);
+  await fs.writeFile("logs.txt", logs.join("\n---\n"));
 }
 
 main();
