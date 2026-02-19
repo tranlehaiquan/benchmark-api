@@ -1,46 +1,85 @@
+Runtime node 
+
+---
 🚀 Benchmarking Node Http... 
   🔹 Scenario: Hello World 
-     Requests/sec: 127717.82 
-     Latency (ms): 0.18 
+     Requests/sec: 55899.64 
+     Latency (ms): 1.07 
   🔹 Scenario: JSON 
-     Requests/sec: 122720 
-     Latency (ms): 0.17 
+     Requests/sec: 55128.73 
+     Latency (ms): 1.09 
   🔹 Scenario: Route Params 
-     Requests/sec: 120573.1 
-     Latency (ms): 0.24 
+     Requests/sec: 53240.73 
+     Latency (ms): 1.08 
+  🔹 Scenario: JSON Body 
+     Requests/sec: 44673.46 
+     Latency (ms): 2.1 
+  🔹 Scenario: Database Read 
+     Requests/sec: 15591.64 
+     Latency (ms): 6.14 
+  🔹 Scenario: Database Write 
+     Requests/sec: 0.28 
+     Latency (ms): 10.67 
 
 ---
 🚀 Benchmarking Express... 
   🔹 Scenario: Hello World 
-     Requests/sec: 124729.6 
-     Latency (ms): 0.2 
+     Requests/sec: 53180.8 
+     Latency (ms): 1.24 
   🔹 Scenario: JSON 
-     Requests/sec: 124023.28 
-     Latency (ms): 0.2 
+     Requests/sec: 54910.55 
+     Latency (ms): 1.11 
   🔹 Scenario: Route Params 
-     Requests/sec: 122237.1 
-     Latency (ms): 0.24 
+     Requests/sec: 52912 
+     Latency (ms): 1.09 
+  🔹 Scenario: JSON Body 
+     Requests/sec: 43937.46 
+     Latency (ms): 2.08 
+  🔹 Scenario: Database Read 
+     Requests/sec: 15433.82 
+     Latency (ms): 6.13 
+  🔹 Scenario: Database Write 
+     Requests/sec: 133.1 
+     Latency (ms): 647.31 
 
 ---
 🚀 Benchmarking Hono... 
   🔹 Scenario: Hello World 
-     Requests/sec: 126519.28 
-     Latency (ms): 0.13 
+     Requests/sec: 86112 
+     Latency (ms): 0.99 
   🔹 Scenario: JSON 
-     Requests/sec: 125925.82 
-     Latency (ms): 0.16 
+     Requests/sec: 81742.55 
+     Latency (ms): 1.01 
   🔹 Scenario: Route Params 
-     Requests/sec: 121771.64 
-     Latency (ms): 0.25 
+     Requests/sec: 80445.1 
+     Latency (ms): 1.01 
+  🔹 Scenario: JSON Body 
+     Requests/sec: 38474.19 
+     Latency (ms): 2.13 
+  🔹 Scenario: Database Read 
+     Requests/sec: 16695.2 
+     Latency (ms): 5.39 
+  🔹 Scenario: Database Write 
+     Requests/sec: 138.81 
+     Latency (ms): 590.81 
 
 ---
 🚀 Benchmarking NestJS... 
   🔹 Scenario: Hello World 
-     Requests/sec: 123115.64 
-     Latency (ms): 0.18 
+     Requests/sec: 52981.82 
+     Latency (ms): 1.16 
   🔹 Scenario: JSON 
-     Requests/sec: 121067.64 
-     Latency (ms): 0.21 
+     Requests/sec: 52472.73 
+     Latency (ms): 1.09 
   🔹 Scenario: Route Params 
-     Requests/sec: 118216.73 
-     Latency (ms): 0.26 
+     Requests/sec: 49063.28 
+     Latency (ms): 1.48 
+  🔹 Scenario: JSON Body 
+     Requests/sec: 40333.1 
+     Latency (ms): 2.11 
+  🔹 Scenario: Database Read 
+     Requests/sec: 15342.19 
+     Latency (ms): 6.18 
+  🔹 Scenario: Database Write 
+     Requests/sec: 131.5 
+     Latency (ms): 626.81 
