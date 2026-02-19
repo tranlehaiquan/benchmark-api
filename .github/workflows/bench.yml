@@ -2,13 +2,16 @@ name: Benchmark
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   benchmark:
+    strategy:
+      matrix:
+        runtime: [node, bun]
     runs-on: ubuntu-latest
 
     services:
@@ -37,7 +40,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Set up Bun
         uses: oven-sh/setup-bun@v2
@@ -50,26 +53,18 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Run Node Benchmark
-        run: pnpm run bench
+      - name: Run Benchmark
+        run: |
+          if [ "${{ matrix.runtime }}" = "node" ]; then
+            pnpm run bench
+          else
+            pnpm run bench:bun
+          fi
         env:
           DATABASE_URL: postgresql://postgres:password@localhost:5432/benchmark
-
-      - name: Rename Node Logs
-        run: mv logs.txt node_logs.txt
-
-      - name: Run Bun Benchmark
-        run: pnpm run bench:bun
-        env:
-          DATABASE_URL: postgresql://postgres:password@localhost:5432/benchmark
-
-      - name: Rename Bun Logs
-        run: mv logs.txt bun_logs.txt
 
       - name: Upload Logs
         uses: actions/upload-artifact@v4
         with:
-          name: benchmark-logs
-          path: |
-            node_logs.txt
-            bun_logs.txt
+          name: benchmark-logs-${{ matrix.runtime }}
+          path: log-${{ matrix.runtime }}.txt
