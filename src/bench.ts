@@ -1,7 +1,9 @@
 import autocannon from "autocannon";
 import { spawn } from "child_process";
+import fs from "node:fs/promises";
 
 const frameworks = [
+  { name: "Node Http", path: `${__dirname}/node-http/index.js` },
   { name: "Express", path: `${__dirname}/express/index.js` },
   { name: "Hono", path: `${__dirname}/hono/index.js` },
   { name: "NestJS", path: `${__dirname}/nest/main.js` },
@@ -14,8 +16,8 @@ const scenarios = [
 ];
 
 async function runBenchmark(framework: { name: string; path: string }) {
-  console.log(`
-🚀 Benchmarking ${framework.name}...`);
+  let log = `🚀 Benchmarking ${framework.name}... \n`;
+  console.log(`🚀 Benchmarking ${framework.name}...`);
 
   const server = spawn("node", [framework.path], {
     env: { ...process.env, PORT: "3000" },
@@ -26,6 +28,7 @@ async function runBenchmark(framework: { name: string; path: string }) {
   await new Promise((resolve) => setTimeout(resolve, 5000));
 
   for (const scenario of scenarios) {
+    log += `  🔹 Scenario: ${scenario.name} \n`;
     console.log(`  🔹 Scenario: ${scenario.name}`);
     const result = await autocannon({
       url: `http://localhost:3000${scenario.path}`,
@@ -34,20 +37,28 @@ async function runBenchmark(framework: { name: string; path: string }) {
     });
     console.log(`     Requests/sec: ${result.requests.average}`);
     console.log(`     Latency (ms): ${result.latency.average}`);
+
+    log += `     Requests/sec: ${result.requests.average} \n`;
+    log += `     Requests/sec: ${result.latency.average} \n`;
   }
 
   // Kill the server process group
   process.kill(-server.pid!);
+  return log;
 }
 
 async function main() {
+  let logs = [];
   for (const framework of frameworks) {
     try {
-      await runBenchmark(framework);
+      const log = await runBenchmark(framework);
+      logs.push(log);
     } catch (e) {
       console.error(`Error benchmarking ${framework.name}:`, e);
     }
   }
+
+  await fs.writeFile("logs.txt", logs);
 }
 
 main();
