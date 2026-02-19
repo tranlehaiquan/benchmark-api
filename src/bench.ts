@@ -12,6 +12,10 @@ const frameworks = [
   { name: "NestJS", path: `${__dirname}/nest/main.js` },
 ];
 
+if (runTime === "bun") {
+  frameworks.push({ name: "Bun Http", path: `${__dirname}/bun-http/index.js` });
+}
+
 const scenarios = [
   { name: "Hello World", path: "/" },
   { name: "JSON", path: "/json" },
