@@ -1,0 +1,38 @@
+{
+  "name": "benchmark-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "bench": "node dist/bench.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.29.3",
+  "dependencies": {
+    "@hono/node-server": "^1.19.9",
+    "@nestjs/common": "^11.1.14",
+    "@nestjs/core": "^11.1.14",
+    "@nestjs/platform-express": "^11.1.14",
+    "autocannon": "^8.0.0",
+    "dotenv": "^17.3.1",
+    "drizzle-orm": "^0.45.1",
+    "express": "^5.2.1",
+    "hono": "^4.11.10",
+    "pg": "^8.18.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/autocannon": "^7.12.7",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.0",
+    "@types/pg": "^8.16.0",
+    "drizzle-kit": "^0.31.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
