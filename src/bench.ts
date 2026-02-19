@@ -74,7 +74,7 @@ async function runBenchmark(framework: { name: string; path: string }) {
 
 async function main() {
   console.log(`Runtime ${runTime} \n`);
-  let logs = [];
+  let logs = [`Runtime ${runTime} \n`];
   for (const framework of frameworks) {
     try {
       const log = await runBenchmark(framework);
