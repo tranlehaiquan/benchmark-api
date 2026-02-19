@@ -16,6 +16,21 @@ const scenarios = [
   { name: "Hello World", path: "/" },
   { name: "JSON", path: "/json" },
   { name: "Route Params", path: "/user/123" },
+  {
+    name: "JSON Body",
+    path: "/data",
+    method: "POST" as const,
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ name: "John Doe", email: "john@example.com" }),
+  },
+  { name: "Database Read", path: "/db/user/1" },
+  {
+    name: "Database Write",
+    path: "/db/user",
+    method: "POST" as const,
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ name: "New User", email: "new@example.com" }),
+  },
 ];
 
 async function runBenchmark(framework: { name: string; path: string }) {
@@ -37,6 +52,9 @@ async function runBenchmark(framework: { name: string; path: string }) {
       url: `http://localhost:3000${scenario.path}`,
       connections: 100,
       duration: 10,
+      method: (scenario as any).method || "GET",
+      headers: (scenario as any).headers,
+      body: (scenario as any).body,
     });
     console.log(`     Requests/sec: ${result.requests.average}`);
     console.log(`     Latency (ms): ${result.latency.average}`);
@@ -46,7 +64,11 @@ async function runBenchmark(framework: { name: string; path: string }) {
   }
 
   // Kill the server process group
-  process.kill(-server.pid!);
+  try {
+    process.kill(-server.pid!);
+  } catch (e) {
+    console.log(e);
+  }
   return log;
 }
 
@@ -62,7 +84,7 @@ async function main() {
     }
   }
 
-  await fs.writeFile("logs.txt", logs.join("\n---\n"));
+  await fs.writeFile(`log-${runTime}.txt`, logs.join("\n---\n"));
 }
 
 main();

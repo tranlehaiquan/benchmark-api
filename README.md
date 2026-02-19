@@ -34,11 +34,14 @@ This project aims to benchmark popular Node.js/TypeScript HTTP libraries to comp
 ```text
 benchmark-api/
 ├── src/
+│   ├── db/           # Drizzle schema and connection
 │   ├── express/      # Express implementation
 │   ├── hono/         # Hono implementation
 │   ├── nest/         # NestJS implementation
-│   └── bench.js      # Main benchmarking script using autocannon
-├── results/          # Stored benchmark results
+│   ├── node-http/    # Node.js native http implementation
+│   └── bench.ts      # Main benchmarking script using autocannon
+├── log-node.txt      # Node.js benchmark results
+├── log-bun.txt       # Bun benchmark results
 └── package.json
 ```
 
@@ -49,51 +52,44 @@ benchmark-api/
 3. **Data Collection**: Capture results in JSON/Markdown format.
 4. **Analysis**: Generate comparison charts and tables.
 
-## 🏃 How to Run (Proposed)
+## 🏃 How to Run
+
+### 1. Prerequisites
+
+- [Node.js](https://nodejs.org/) (latest LTS)
+- [Bun](https://bun.sh/) (optional, for Bun benchmarks)
+- [PostgreSQL](https://www.postgresql.org/) (for database benchmarks)
+
+### 2. Setup
 
 ```bash
 # Install dependencies
 pnpm install
 
-# Run all benchmarks
+# Build the project
+pnpm run build
+
+# Setup environment variables (required for DB benchmarks)
+cp .env.example .env
+# Edit .env and set your DATABASE_URL
+```
+
+### 3. Run Benchmarks
+
+You can run the benchmarks using Node.js or Bun as the server runtime. The orchestrator will start each server, run autocannon, and then stop it.
+
+#### Using Node.js
+```bash
 pnpm run bench
 ```
+Results will be saved to `log-node.txt`.
+
+#### Using Bun
+```bash
+pnpm run bench:bun
+```
+Results will be saved to `log-bun.txt`.
 
 ### Result
 
-Running on my Macbook: M3 Pro 36 GB
-
-```
-🚀 Benchmarking Express...
-  🔹 Scenario: Hello World
-     Requests/sec: 56225.46
-     Latency (ms): 1.1
-  🔹 Scenario: JSON
-     Requests/sec: 54785.46
-     Latency (ms): 1.12
-  🔹 Scenario: Route Params
-     Requests/sec: 53662.55
-     Latency (ms): 1.09
-
-🚀 Benchmarking Hono...
-  🔹 Scenario: Hello World
-     Requests/sec: 88288
-     Latency (ms): 0.98
-  🔹 Scenario: JSON
-     Requests/sec: 81835.64
-     Latency (ms): 1.01
-  🔹 Scenario: Route Params
-     Requests/sec: 80322.91
-     Latency (ms): 1.02
-
-🚀 Benchmarking NestJS...
-  🔹 Scenario: Hello World
-     Requests/sec: 52650.19
-     Latency (ms): 1.16
-  🔹 Scenario: JSON
-     Requests/sec: 51838.55
-     Latency (ms): 1.1
-  🔹 Scenario: Route Params
-     Requests/sec: 48440.73
-     Latency (ms): 1.61
-```
+Running on my Macbook: M3 Pro 36 GB in log-bun.txt and log-node.

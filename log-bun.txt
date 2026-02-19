@@ -1,0 +1,46 @@
+🚀 Benchmarking Node Http... 
+  🔹 Scenario: Hello World 
+     Requests/sec: 118920.73 
+     Latency (ms): 0.1 
+  🔹 Scenario: JSON 
+     Requests/sec: 121242.19 
+     Latency (ms): 0.1 
+  🔹 Scenario: Route Params 
+     Requests/sec: 117949.1 
+     Latency (ms): 0.16 
+
+---
+🚀 Benchmarking Express... 
+  🔹 Scenario: Hello World 
+     Requests/sec: 118100.37 
+     Latency (ms): 0.11 
+  🔹 Scenario: JSON 
+     Requests/sec: 117570.91 
+     Latency (ms): 0.11 
+  🔹 Scenario: Route Params 
+     Requests/sec: 115825.46 
+     Latency (ms): 0.16 
+
+---
+🚀 Benchmarking Hono... 
+  🔹 Scenario: Hello World 
+     Requests/sec: 118210.91 
+     Latency (ms): 0.1 
+  🔹 Scenario: JSON 
+     Requests/sec: 118112 
+     Latency (ms): 0.11 
+  🔹 Scenario: Route Params 
+     Requests/sec: 117696 
+     Latency (ms): 0.15 
+
+---
+🚀 Benchmarking NestJS... 
+  🔹 Scenario: Hello World 
+     Requests/sec: 118688 
+     Latency (ms): 0.1 
+  🔹 Scenario: JSON 
+     Requests/sec: 116994.91 
+     Latency (ms): 0.11 
+  🔹 Scenario: Route Params 
+     Requests/sec: 117716.37 
+     Latency (ms): 0.16 
